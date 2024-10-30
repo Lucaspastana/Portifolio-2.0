@@ -1,36 +1,27 @@
-import { useState } from 'react';
-import Nav from './Navbar'; // Certifique-se de que o caminho está correto
-import './App.css';
+// src/App.jsx
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './nav'; // Verifique se o caminho está correto
 
-function App() {
-  const [count, setCount] = useState(0);
+// Definindo os componentes diretamente no App.js para teste
+const Home = () => <h1>Home Page</h1>;
+const About = () => <h1>About Us</h1>;
+const Services = () => <h1>Our Services</h1>;
+const Contact = () => <h1>Contact Us</h1>;
 
+const App = () => {
   return (
-    <>
+    <Router>
       <Navbar />
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
 
